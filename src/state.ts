@@ -3,6 +3,7 @@ import { User } from "./models/user";
 import { Role } from "./models/role";
 import { Reimbursement } from "./models/reimbursement";
 import { ReimbursementStatus } from "./models/reimbursementStatus";
+import { ReimbursementType } from "./models/reimbursementType";
 
 export let users:User[] = [
     {
@@ -72,13 +73,13 @@ export let reimbursements: Reimbursement[] = [{
 {
     reimbursementId: 2, 
 	author: 3, 
-	amount: 200,  
-    dateSubmitted: 2, 
-    dateResolved: 2, 
-    description: '2', 
-    resolver: 2,
+	amount: 300,  
+    dateSubmitted: 3, 
+    dateResolved: 3, 
+    description: '3', 
+    resolver: 3,
     status: 3, 
-    type: 2
+    type: 3
 }
 ]
 
@@ -92,5 +93,21 @@ export let reimbursementStatuss:ReimbursementStatus[] = [{
 },{
     statusId: 3,
     status: 'Denied'
+}
+]
+
+
+export let reimbursementTypes:ReimbursementType[] = [{
+    typeId: 1,
+    type: 'Lodging'
+},{
+    typeId: 2,
+    type: 'Travel'
+},{
+    typeId: 3,
+    type: 'Food'
+},{
+    typeId: 4,
+    type: 'Other'
 }
 ]
