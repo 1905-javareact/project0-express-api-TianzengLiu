@@ -1,6 +1,10 @@
 import { connectionPool } from '.';
 import { sqlUsertojsUSer } from '../util/user-converter';
 import { PoolClient } from 'pg';
+// import { bcrypt } from 'bcrypt'
+
+
+// const saltRounds = 10; // for bcrypt
 
 //we are allowing getAllUsers to be added to our c++ apis
 export async function getAllUsers(){
@@ -48,13 +52,21 @@ export async function findUserByUsernameAndPassword(username:string, password:st
 
     try{
         client = await connectionPool.connect()
-        let query = 'SELECT * FROM "ers-api".users1 WHERE username = $1 and password_u = $2'
-        let result = await client.query(query, [username, password])
-        if(!result.rows[0]){
-            return 'User not found'
-        }
-        return sqlUsertojsUSer(result.rows[0])
 
+
+        // bcrypt.hash(password, saltRounds, async function(err, hash) {
+            // Store hash in your password DB.
+          
+
+
+
+            let query = 'SELECT * FROM "ers-api".users1 WHERE username = $1 and password_u = $2'
+            let result = await client.query(query, [username, password])
+            if(!result.rows[0]){
+                return 'User not found'
+            }
+            return sqlUsertojsUSer(result.rows[0])
+        // });
     }catch(err){
         console.log(err);
         return 'Internal'
